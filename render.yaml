@@ -1,0 +1,15 @@
+# Based on https://render.com/docs/deploy-vite
+services:
+  - type: web
+    name: pikiora-frontend
+    runtime: static
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    envVars:
+      - key: VITE_API_URL
+        value: https://pikiora-clinic.onrender.com/api/
+    # Send every page (e.g. /my-appointments) to React Router
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
