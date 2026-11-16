@@ -1,12 +1,12 @@
-# Based on https://render.com/docs/deploy-vite
+# React frontend (Create React App) on Render as a static site
 services:
   - type: web
     name: pikiora-frontend
     runtime: static
-    buildCommand: npm install && npm run build
-    staticPublishPath: dist
+    buildCommand: npm install && CI=false npm run build
+    staticPublishPath: build
     envVars:
-      - key: VITE_API_URL
+      - key: REACT_APP_API_URL
         value: https://pikiora-clinic.onrender.com/api/
     # Send every page (e.g. /my-appointments) to React Router
     routes:
